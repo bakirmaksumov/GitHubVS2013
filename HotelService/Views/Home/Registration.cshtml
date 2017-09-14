@@ -10,9 +10,23 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Registration</title>
+    <!---Here we add stylesheet-->
+    <link rel="stylesheet" href="@Href("~/Content/Site.css")" type="text/css"/>
 </head>
 <body>
     <div>
+        <p>Please fill all neccessary filed and click the button "Finish registration"</p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <p>Your surname: @Html.TextBoxFor(x=>x.Surname)</p>
+            <p>Your name: @Html.TextBoxFor(x=>x.Name)</p>
+            <p>Your midname: @Html.TextBoxFor(x=>x.MiddleName)</p>
+            <p>Your phone: @Html.TextBoxFor(x=>x.Phone)</p>
+            <p>Eamil: @Html.TextBoxFor(x => x.EmailAdress)</p>
+            <p>Choose the room: @Html.DropDownListFor(x=>x.SelectedRoom.Name, new SelectList(ViewBag.Room, "Name", "Name"))</p>
+            <input type="submit" value="finish registration"/>
+        }
         
     </div>
 </body>
